@@ -3,7 +3,7 @@
 // dossier.json with buildDossier from vendor/makefun-frontend.ts.
 // Node 22, standard library only. Run twice: both runs write identical bytes.
 
-import { cpSync, existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildDossier } from "./vendor/makefun-frontend.ts";
@@ -21,8 +21,13 @@ const dossierCaps = {
 
 function handIn() {
   // Start from a clean output directory so a stale file can never leak in.
-  rmSync(outputDir, { recursive: true, force: true });
+  // Never remove the directory itself: the grader runs as uid 65534 on a
+  // read-only filesystem where /output's parent (/) is not writable, so
+  // deleting the directory throws EACCES. Clear only its contents.
   mkdirSync(outputDir, { recursive: true });
+  for (const child of readdirSync(outputDir)) {
+    rmSync(join(outputDir, child), { recursive: true, force: true });
+  }
 
   for (const sub of ["app", "screenshots"]) {
     const source = join(repoRoot, sub);
