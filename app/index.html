@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DealSleuth — Black Friday 2026 Deal Finder</title>
+<meta name="description" content="Real Black Friday and Cyber Monday deals, checked by hand on 27 November 2026 at Amazon, Best Buy, Target and Walmart — with an honest verdict on each one.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-inner">
+    <p class="eyebrow">Black Friday &middot; Cyber Monday &middot; 27 Nov 2026</p>
+    <h1>Deal<span class="sleuth">Sleuth</span></h1>
+    <p class="tagline">Real deals, checked by hand today — with an honest verdict on whether each one is actually a bargain.</p>
+    <dl class="stats" id="statsBar">
+      <div><dt>Deals checked</dt><dd id="statCount">22</dd></div>
+      <div><dt>Stores</dt><dd>4</dd></div>
+      <div><dt>Total savings</dt><dd id="statSavings">$3,358.98</dd></div>
+      <div><dt>Deepest cut</dt><dd>67% off</dd></div>
+    </dl>
+  </div>
+</header>
+
+<main>
+  <section class="controls" aria-label="Search and filter deals">
+    <div class="search-wrap">
+      <label for="searchBox" class="visually-hidden">Search deals</label>
+      <input id="searchBox" type="search" placeholder="Search a product or store — try “airpods”, “tv”, “lego”…" autocomplete="off">
+    </div>
+    <div class="filter-row">
+      <label>Category
+        <select id="categoryFilter">
+          <option value="">All categories</option>
+        </select>
+      </label>
+      <label>Store
+        <select id="storeFilter">
+          <option value="">All stores</option>
+        </select>
+      </label>
+      <label>Discount
+        <select id="discountFilter">
+          <option value="0">Any discount</option>
+          <option value="20">20% off or more</option>
+          <option value="40">40% off or more</option>
+          <option value="50">50% off or more</option>
+        </select>
+      </label>
+      <label>Sort by
+        <select id="sortSelect">
+          <option value="discount">Best discount first</option>
+          <option value="saving">Biggest saving first</option>
+          <option value="priceAsc">Lowest price first</option>
+          <option value="priceDesc">Highest price first</option>
+        </select>
+      </label>
+      <button id="resetButton" type="button">Reset</button>
+    </div>
+    <p class="result-line" id="resultLine" aria-live="polite"></p>
+  </section>
+
+  <section class="verdict-key" aria-label="What the verdicts mean">
+    <h2>How to read a verdict</h2>
+    <ul>
+      <li><span class="pill pill-newlow">New low</span> Cheapest price we could find any record of — a genuine record low.</li>
+      <li><span class="pill pill-strong">Strong price</span> A big, real cut on a fairly priced item. Worth buying if you wanted it anyway.</li>
+      <li><span class="pill pill-routine">Routine sale</span> A real discount, but this item goes on sale at about this price often.</li>
+      <li><span class="pill pill-inflated">Inflated list</span> The “was” price is padded, or the “cut” only returns the item to its old price. Read the note.</li>
+    </ul>
+  </section>
+
+  <section id="dealGrid" class="deal-grid" aria-live="polite"></section>
+
+  <p class="empty-note" id="emptyNote" hidden>No deals match that search. Try clearing a filter or searching a shorter word.</p>
+
+  <section class="method" aria-label="How prices were checked">
+    <h2>How every price was checked</h2>
+    <p>Each deal on this page was found and checked on <strong>27 November 2026</strong>. The sale price was read at the named store or in a deals source that names that store and its price — never guessed, never carried over from an old sale. The “was” price is the store’s own regular or reference price. Prices move during Black Friday week, so always confirm the price on the store page before you buy.</p>
+    <p class="sources">Sources checked today: the stores’ own pages and Black Friday releases (Best Buy, Target, Walmart), and the deal trackers Digital Citizen, PopSci, GeekyGoo, TradingView/Benzinga, Clark Deals and GameGavel. Every card names where its price was read.</p>
+  </section>
+</main>
+
+<footer>
+  <p>DealSleuth — an independent deal finder. Not affiliated with Amazon, Best Buy, Target, Walmart or any brand shown. Store names and product names belong to their owners. Prices in US dollars, checked 27 Nov 2026.</p>
+</footer>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>
